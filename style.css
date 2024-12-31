@@ -1,0 +1,183 @@
+:root {
+      --primary-color: #8b0000;
+      --secondary-color: #ffd700;
+      --accent-color: #ff4500;
+      --text-color: linear-gradient(45deg, #ffd700, #ffa500);
+      --snow-color: rgba(255, 255, 255, 0.8);
+      --background-gradient: radial-gradient(circle at center, #8b0000, #4b0000);
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: var(--background-gradient);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+    }
+
+    .top-bar, .bottom-bar {
+      position: fixed;
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+      z-index: 100;
+      backdrop-filter: blur(5px);
+    }
+
+    .top-bar {
+      top: 0;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .bottom-bar {
+      bottom: 0;
+      border-top: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .countdown-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 50;
+    }
+
+    #countdown {
+      font-size: 12vw;
+      font-weight: bold;
+      background: var(--text-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      animation: pulse 1s infinite alternate;
+    }
+
+    #greeting {
+      font-size: 4vw;
+      margin-top: 30px;
+      font-family: 'Great Vibes', cursive;
+      color: var(--secondary-color);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      position: relative;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    #greeting::before, #greeting::after {
+      content: '🎉';
+      position: absolute;
+      font-size: 1.5em;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    #greeting::before {
+      left: -1.5em;
+      top: -0.5em;
+    }
+
+    #greeting::after {
+      right: -1.5em;
+      bottom: -0.5em;
+    }
+
+    #share-btn {
+      background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      transition: transform 0.2s;
+    }
+
+    #share-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .snowflake, .bubble, .balloon {
+      position: absolute;
+      color: var(--snow-color);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .snowflake {
+      font-size: 1.5em;
+      animation: fall linear infinite, rotate 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    .bubble {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.6;
+    }
+
+    .balloon {
+      width: 50px;
+      height: 70px;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      animation: floatUp 10s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      opacity: 0.8;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: white;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(110vh) translateX(-50%) rotate(0deg); }
+      100% { transform: translateY(-10vh) translateX(50%) rotate(360deg); }
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .firework {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+      box-shadow: 0 0 10px var(--accent-color);
+      opacity: 0.5;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(10); opacity: 0; }
+    }
